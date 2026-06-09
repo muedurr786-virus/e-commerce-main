@@ -1,0 +1,36 @@
+{% extends 'base/base.html' %}
+{% block body %}
+
+{% for i in product_data %}
+
+  <div class="card shadow border-0 rounded-4" style="width: 22rem;">
+    <span class="badge bg-danger position-absolute top-0 end-0 m-3">-25%</span>
+    {% if i.product_image %}
+    <img src="{{i.product_image.url}}" class="card-img-top" alt="Product" />
+    {% endif %}
+    <div class="card-body">
+      <h4 class="card-title fw-bold">{{i.product_name}}</h4>
+
+      <p class="card-text text-muted">{{i.description}}</p>
+
+      <div class="mb-3">
+        <span class="fs-4 fw-bold text-primary">${{i.price}}</span>
+        <span class="text-decoration-line-through text-muted ms-2">Stock : {{i.stock}}</span>
+      </div>
+
+      <div class="d-flex gap-2">
+        <a href="{% url "view_product" i.id %}" class="btn btn-primary w-100 rounded-3">Place Order</a>
+
+        <a href="{% url "review" i.id %}" class="btn btn-outline-dark rounded-3">Add Review</a>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+{% endfor %}
+{% endblock body%}

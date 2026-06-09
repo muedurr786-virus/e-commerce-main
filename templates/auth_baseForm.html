@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Modern Form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #3b82f6, #6366f1);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .form-container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  }
+
+  .form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1e293b;
+  }
+
+  .input-group {
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .input-group input,
+  .input-group textarea {
+    width: 100%;
+    padding: 12px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+    transition: 0.3s;
+  }
+
+  .input-group label {
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    color: #64748b;
+    font-size: 14px;
+    background: #fff;
+    padding: 0 5px;
+    transition: 0.3s;
+    pointer-events: none;
+  }
+
+  .input-group input:focus,
+  .input-group textarea:focus {
+    border-color: #3b82f6;
+  }
+
+  .input-group input:focus + label,
+  .input-group input:valid + label,
+  .input-group textarea:focus + label,
+  .input-group textarea:valid + label {
+    top: -8px;
+    font-size: 12px;
+    color: #3b82f6;
+  }
+
+  textarea {
+    resize: none;
+    height: 100px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #3b82f6;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .btn:hover {
+    background: #2563eb;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="form-container">
+  <h2>{{form_title}}</h2>
+
+  <form method="post" action="">
+    {% csrf_token %}
+    {{form.as_p}}
+
+
+    <button type="submit" class="btn">{{btn}}</button>
+    <a href="{% url 'register' %}">Register</a>
+  </form>
+</div>
+
+</body>
+</html>

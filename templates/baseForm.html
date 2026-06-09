@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %}
+{% block body %}
+
+
+  <div class="form-container">
+    <h2>{{ form_title }}</h2>
+
+    <form method="post" action="" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+    
+      <button type="submit" class="btn btn-success">{{ btn }}</button>
+      {% comment %} {% if request.path == %}{% endif %} {% endcomment %}
+    </form>
+  </div>
+
+
+{% endblock %}
